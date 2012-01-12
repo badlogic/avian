@@ -21,14 +21,6 @@ public class Arrays {
     return (a == null && b == null) || (a != null && a.equals(b));
   }
 
-  public static void sort(Object[] array) {
-    sort(array, new Comparator() {
-        public int compare(Object a, Object b) {
-          return ((Comparable) a).compareTo(b);
-        }
-      });
-  }
-
   public static <T> void sort(T[] array, Comparator<? super T> comparator) {
     // insertion sort
     for (int j = 1; j < array.length; ++j) {
@@ -40,6 +32,216 @@ public class Arrays {
       }
       array[i + 1] = t;
     }
+  }
+  
+  public static void sort(byte[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code char} array to be sorted.
+   */
+  public static void sort(char[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code char} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   */
+  public static void sort(char[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code double} array to be sorted.
+   * @see #sort(double[], int, int)
+   */
+  public static void sort(double[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order. The
+   * values are sorted according to the order imposed by {@code Double.compareTo()}.
+   *
+   * @param array
+   *            the {@code double} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   * @see Double#compareTo(Double)
+   */
+  public static void sort(double[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code float} array to be sorted.
+   * @see #sort(float[], int, int)
+   */
+  public static void sort(float[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order. The
+   * values are sorted according to the order imposed by {@code Float.compareTo()}.
+   *
+   * @param array
+   *            the {@code float} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   * @see Float#compareTo(Float)
+   */
+  public static void sort(float[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code int} array to be sorted.
+   */
+  public static void sort(int[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code int} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   */
+  public static void sort(int[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code long} array to be sorted.
+   */
+  public static void sort(long[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code long} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   */
+  public static void sort(long[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+
+  /**
+   * Sorts the specified array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code short} array to be sorted.
+   */
+  public static void sort(short[] array) {
+      DualPivotQuicksort.sort(array);
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending numerical order.
+   *
+   * @param array
+   *            the {@code short} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   */
+  public static void sort(short[] array, int start, int end) {
+      DualPivotQuicksort.sort(array, start, end);
+  }
+  
+  public static void sort(Object[] array) {
+      // BEGIN android-changed
+      ComparableTimSort.sort(array);
+      // END android-changed
+  }
+
+  /**
+   * Sorts the specified range in the array in ascending natural order. All
+   * elements must implement the {@code Comparable} interface and must be
+   * comparable to each other without a {@code ClassCastException} being
+   * thrown.
+   *
+   * @param array
+   *            the {@code Object} array to be sorted.
+   * @param start
+   *            the start index to sort.
+   * @param end
+   *            the last + 1 index to sort.
+   * @throws ClassCastException
+   *                if an element in the array does not implement {@code Comparable}
+   *                or some elements cannot be compared to each other.
+   * @throws IllegalArgumentException
+   *                if {@code start > end}.
+   * @throws ArrayIndexOutOfBoundsException
+   *                if {@code start < 0} or {@code end > array.length}.
+   */
+  public static void sort(Object[] array, int start, int end) {
+      // BEGIN android-changed
+      ComparableTimSort.sort(array, start, end);
+      // END android-changed
   }
 
   public static <T> List<T> asList(final T ... array) {

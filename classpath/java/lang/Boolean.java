@@ -35,6 +35,10 @@ public final class Boolean implements Comparable<Boolean> {
     return ("true".equals(s) ? Boolean.TRUE : Boolean.FALSE);
   }
 
+  public static boolean parseBoolean(String s) {
+      return "true".equalsIgnoreCase(s);
+  }
+  
   public int compareTo(Boolean o) {
     return (value ? (o.value ? 0 : 1) : (o.value ? -1 : 0));
   }

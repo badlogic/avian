@@ -777,3 +777,15 @@ Java_java_lang_Double_fillBufferWithDouble(JNIEnv* e, jclass, jdouble val,
   e->ReleaseByteArrayElements(buffer, buf, 0);
   return count;
 }
+
+extern "C" JNIEXPORT jdouble JNICALL
+Java_java_lang_Math_atan2(JNIEnv*, jclass, jdouble y, jdouble x)
+{
+  return atan2(y, x);
+}
+
+extern "C" JNIEXPORT jdouble JNICALL
+Java_java_lang_Math_cbrt(JNIEnv*, jclass, jdouble val)
+{
+  return cbrt(val);
+}

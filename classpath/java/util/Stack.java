@@ -27,4 +27,8 @@ public class Stack<T> extends Vector<T> {
     add(element);
     return element;
   }
+  
+  public T firstElement() {
+	  return get(0);
+  }
 }

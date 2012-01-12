@@ -12,6 +12,9 @@ package java.lang;
 
 public final class Byte extends Number implements Comparable<Byte> {
   public static final Class TYPE = Class.forCanonicalName("B");
+  
+  public static final byte MAX_VALUE = (byte) 0x7F;
+  public static final byte MIN_VALUE = (byte) 0x80;
 
   private final byte value;
 
@@ -19,6 +22,10 @@ public final class Byte extends Number implements Comparable<Byte> {
     this.value = value;
   }
 
+  public static Byte valueOf(String value) {
+	  return parseByte(value);
+  }
+  
   public static Byte valueOf(byte value) {
     return new Byte(value);
   }

@@ -14,6 +14,11 @@ public final class Float extends Number {
   public static final Class TYPE = Class.forCanonicalName("F");
   private static final int EXP_BIT_MASK = 0x7F800000;
   private static final int SIGNIF_BIT_MASK = 0x007FFFFF;
+  public static final float MAX_VALUE = 3.40282346638528860e+38f;
+  public static final float MIN_VALUE = 1.40129846432481707e-45f;
+  public static final float NaN = 0.0f / 0.0f; // FIXME pretty sure this is wrong.
+  public static final float POSITIVE_INFINITY = 1.0f / 0.0f;
+  public static final float NEGATIVE_INFINITY = -1.0f / 0.0f;
   
   private final float value;  
 
@@ -100,6 +105,37 @@ public final class Float extends Number {
       result = 0x7fc00000;
     }
     return result;
+  }
+  
+  public static int compare(float float1, float float2) {
+      // Non-zero, non-NaN checking.
+      if (float1 > float2) {
+          return 1;
+      }
+      if (float2 > float1) {
+          return -1;
+      }
+      if (float1 == float2 && 0.0f != float1) {
+          return 0;
+      }
+
+      // NaNs are equal to other NaNs and larger than any other float
+      if (isNaN(float1)) {
+          if (isNaN(float2)) {
+              return 0;
+          }
+          return 1;
+      } else if (isNaN(float2)) {
+          return -1;
+      }
+
+      // Deal with +0.0 and -0.0
+      int f1 = floatToRawIntBits(float1);
+      int f2 = floatToRawIntBits(float2);
+      // The below expression is equivalent to:
+      // (f1 == f2) ? 0 : (f1 < f2) ? -1 : 1
+      // because f1 and f2 are either 0 or Integer.MIN_VALUE
+      return (f1 >> 31) - (f2 >> 31);
   }
 
   public static native int floatToRawIntBits(float value);

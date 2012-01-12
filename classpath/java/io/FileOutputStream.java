@@ -16,6 +16,10 @@ public class FileOutputStream extends OutputStream {
   //   }
 
   private int fd;
+  
+  public FileOutputStream(File file, boolean append) throws IOException {
+	  this(file.getAbsolutePath(), append);
+  }
 
   public FileOutputStream(FileDescriptor fd) {
     this.fd = fd.value;

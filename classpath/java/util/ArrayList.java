@@ -55,6 +55,16 @@ public class ArrayList<T> extends AbstractList<T> implements java.io.Serializabl
     }
     array = newArray;
   }
+  
+  public void ensureCapacity(int minimumCapacity) {
+      Object[] a = array;
+      if (a.length < minimumCapacity) {
+          Object[] newArray = new Object[minimumCapacity];
+          System.arraycopy(a, 0, newArray, 0, size);
+          array = newArray;
+          modCount++;
+      }
+  }
 
   private static boolean equal(Object a, Object b) {
     return (a == null && b == null) || (a != null && a.equals(b));

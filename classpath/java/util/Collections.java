@@ -13,6 +13,30 @@ package java.util;
 public class Collections {
 
   private Collections() { }
+  
+  
+ public static <T> boolean addAll(Collection<? super T> c, T... a) {
+     boolean modified = false;
+     for (int i = 0; i < a.length; i++) {
+         modified |= c.add(a[i]);
+     }
+     return modified;
+ }
+ 
+ public static void swap(List<?> list, int index1, int index2) {
+     if (list == null) {
+         throw new NullPointerException();
+     }
+     final int size = list.size();
+     if (index1 < 0 || index1 >= size || index2 < 0 || index2 >= size) {
+         throw new IndexOutOfBoundsException();
+     }
+     if (index1 == index2) {
+         return;
+     }
+     List<Object> rawList = (List<Object>) list;
+     rawList.set(index2, rawList.set(index1, rawList.get(index2)));
+ }
 
   public static void shuffle(List list, Random random) {
     Object[] array = toArray(list, new Object[list.size()]);
@@ -150,7 +174,6 @@ public class Collections {
     public boolean addAll(Collection<? extends T> collection) {
       synchronized (lock) { return this.collection.addAll(collection); }
     }
-
     public boolean remove(Object e) {
       synchronized (lock) { return collection.remove((T)e); }
     }
@@ -558,5 +581,33 @@ public class Collections {
     public int compare(T o1, T o2) {
       return - cmp.compare(o1, o2);
     }
+  }
+  
+  /**
+   * Modifies the specified {@code List} by reversing the order of the
+   * elements.
+   *
+   * @param list
+   *            the list to reverse.
+   * @throws UnsupportedOperationException
+   *             when replacing an element in the List is not supported.
+   */
+  @SuppressWarnings("unchecked")
+  public static void reverse(List list) {
+      int size = list.size();
+      for (int i = 0; i < size / 2; i++) {
+          Object front = list.get(i);
+          Object back = list.get(size-i);
+          list.set(i, back);
+          list.set(size-i, front);
+      }
+  }
+  
+  public static <T> void sort(List<T> list, Comparator<? super T> comparator) {
+      T[] array = list.toArray((T[]) new Object[list.size()]);
+      Arrays.sort(array, comparator);
+      for(int i = 0; i < list.size(); i++) {
+    	  list.set(i, array[i]);
+      }
   }
 }

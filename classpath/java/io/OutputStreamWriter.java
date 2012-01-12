@@ -15,6 +15,10 @@ import avian.Utf8;
 public class OutputStreamWriter extends Writer {
   private final OutputStream out;
 
+  public OutputStreamWriter(OutputStream out, String encoding) {
+	  this(out);
+  }
+  
   public OutputStreamWriter(OutputStream out) {
     this.out = out;
   }

@@ -79,6 +79,19 @@ public final class Math {
     return random.nextDouble();
   }
 
+  public static double signum(double d) {
+      if (Double.isNaN(d)) {
+          return Double.NaN;
+      }
+      double sig = d;
+      if (d > 0) {
+          sig = 1.0;
+      } else if (d < 0) {
+          sig = -1.0;
+      }
+      return sig;
+  }
+  
   public static native double floor(double v);
 
   public static native double ceil(double v);
@@ -102,4 +115,16 @@ public final class Math {
   public static native double sqrt(double v);
 
   public static native double pow(double v, double e);
+  
+  public static native double atan2(double y, double x);
+  
+  public static native double cbrt(double d);
+
+  public static double toRadians(double angdeg) {
+        return angdeg / 180d * PI;
+    }
+  
+  public static double toDegrees(double angrad) {
+      return angrad * 180d / PI;
+  }
 }

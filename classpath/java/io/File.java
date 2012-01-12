@@ -245,4 +245,11 @@ public class File implements Serializable {
     }
   }
 
+	public long lastModified() {
+		return 0;
+	}
+
+	public static File createTempFile(String fileName, String suffix) throws IOException {
+		throw new RuntimeException("Not implemented");
+	}
 }

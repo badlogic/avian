@@ -157,4 +157,20 @@ public final class Long extends Number implements Comparable<Long> {
 
     return number;
   }
+  
+  /**
+   * Reverses the order of the bytes of the specified long value.
+   *
+   * @param v
+   *            the long value for which to reverse the byte order.
+   * @return the reversed value.
+   * @since 1.5
+   */
+  public static long reverseBytes(long v) {
+      // Hacker's Delight 7-1, with minor tweak from Veldmeijer
+      // http://graphics.stanford.edu/~seander/bithacks.html
+      v = ((v >>> 8) & 0x00FF00FF00FF00FFL) | ((v & 0x00FF00FF00FF00FFL) << 8);
+      v = ((v >>>16) & 0x0000FFFF0000FFFFL) | ((v & 0x0000FFFF0000FFFFL) <<16);
+      return ((v >>>32)                   ) | ((v                      ) <<32);
+  }
 }

@@ -12,7 +12,8 @@ package java.lang;
 
 public final class Short extends Number implements Comparable<Short> {
   public static final Class TYPE = Class.forCanonicalName("S");
-  public static final short MAX_VALUE = 32767;
+  public static final short MAX_VALUE = (short) 0x7FFF;
+  public static final short MIN_VALUE = (short) 0x8000;
 
   private final short value;
 
@@ -20,6 +21,10 @@ public final class Short extends Number implements Comparable<Short> {
     this.value = value;
   }
 
+  public static Short valueOf(String value) {
+	  return parseShort(value);
+  }
+  
   public static Short valueOf(short value) {
     return new Short(value);
   }
@@ -70,5 +75,32 @@ public final class Short extends Number implements Comparable<Short> {
 
   public double doubleValue() {
     return (double) value;
+  }
+  
+  /**
+   * Reverses the bytes of the specified short.
+   *
+   * @param s
+   *            the short value for which to reverse bytes.
+   * @return the reversed value.
+   * @since 1.5
+   */
+  public static short reverseBytes(short s) {
+      return (short) ((s << 8) | ((s >>> 8) & 0xFF));
+  }
+  
+  public static short parseShort(String string)
+          throws NumberFormatException {
+	  return parseShort(string, 10);
+  }
+  
+  public static short parseShort(String string, int radix)
+          throws NumberFormatException {
+      int intValue = Integer.parseInt(string, radix);
+      short result = (short) intValue;
+      if (result == intValue) {
+          return result;
+      }
+      throw new NumberFormatException();
   }
 }

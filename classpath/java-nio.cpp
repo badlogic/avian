@@ -863,4 +863,15 @@ Java_java_nio_channels_SocketSelector_natUpdateReadySet(JNIEnv *, jclass,
   return ready;
 }
 
+//---------------------------------------------------------------
+// additions by mzechner, taken from Harmony where possible
+//---------------------------------------------------------------
+extern "C" JNIEXPORT jboolean JNICALL
+Java_java_nio_ByteOrder_isLittleEndian
+  (JNIEnv *, jclass)
+{
+    int i = 1;
+    return *reinterpret_cast<jbyte*>(&i) == 1;
+}
+
 

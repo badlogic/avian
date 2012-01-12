@@ -14,6 +14,10 @@ public class ArrayIndexOutOfBoundsException extends IndexOutOfBoundsException {
   public ArrayIndexOutOfBoundsException(String message, Throwable cause) {
     super(message, cause);
   }
+  
+  public ArrayIndexOutOfBoundsException(int index) {
+	  this("index " + index, null);
+  }
 
   public ArrayIndexOutOfBoundsException(String message) {
     this(message, null);

@@ -68,9 +68,17 @@ public class Random {
       }
     }
   }
+  
+  public boolean nextBoolean() {
+      return next(1) != 0;
+  }
 
   public long nextLong() {
     return ((long) next(32) << 32) + next(32);
+  }
+  
+  public float nextFloat() {
+      return (next(24) / 16777216f);
   }
 
   public double nextDouble() {
